@@ -10,10 +10,9 @@ import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
 import EmojiPicker from './components/EmojiPicker';
 import EmojiList from './components/EmojiList';
-import EmojiSticker from './components/EmojiSticker';
+import EmojiSticker from './Components/EmojiSticker';
 
-import * as MediaLibrary from 'expo-media-library';
-import { captureRef } from 'react-native-view-shot';
+
 
 
 const PlaceholderImage = require('./assets/images/background-image.png');
@@ -23,16 +22,13 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [pickedEmoji, setPickedEmoji] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [status, requestPermission] = MediaLibrary.usePermissions();
+
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       quality: 1,
     });
-    if (status === null) {
-      requestPermission();
-    }
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
       setShowAppOptions(true);
@@ -53,9 +49,9 @@ export default function App() {
     setIsModalVisible(false);
   };
 
-  const onSaveImageAsync = async () => {
-    // we will implement this later
-  };
+  // const onSaveImageAsync = async () => {
+  //   // we will implement this later
+  // };
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -66,9 +62,9 @@ export default function App() {
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <IconButton icon="refresh" label="Back" onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
-            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+            {/* <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} /> */}
           </View>
         </View>
       ) : (
