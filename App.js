@@ -49,9 +49,9 @@ export default function App() {
     setIsModalVisible(false);
   };
 
-  // const onSaveImageAsync = async () => {
-  //   // we will implement this later
-  // };
+  const onFilter = () => {
+    // we will implement this later
+  };
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -64,7 +64,7 @@ export default function App() {
           <View style={styles.optionsRow}>
             <IconButton icon="refresh" label="Back" onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
-            {/* <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} /> */}
+            {<IconButton icon="filter-list" label="Filters" onPress={onFilter} />}
           </View>
         </View>
       ) : (
